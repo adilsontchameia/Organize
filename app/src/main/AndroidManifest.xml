@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.adilsonchameia.organize">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.Receita" android:theme="@style/ReceitaTheme"/>
+        <activity android:name=".activity.Despesa" android:theme="@style/DespesaTheme" />
+        <activity
+            android:name=".activity.Principal"
+            android:label="@string/title_activity_principal"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.Cadastro" />
+        <activity android:name=".activity.Login" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:theme="@style/Theme.Intro">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
