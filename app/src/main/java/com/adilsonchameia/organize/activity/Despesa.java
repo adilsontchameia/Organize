@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.adilsonchameia.organize.R;
 import com.adilsonchameia.organize.helper.DateCustom;
@@ -34,24 +35,46 @@ public class Despesa extends AppCompatActivity {
 
     public void salvarDespesa(View view){
 
-        if(validarCampos()){
+        if(validarCampos()) {
+            movimentacao = new Movimentacao();
+            String data = campoData.getText().toString();
+            movimentacao.setValor(Double.parseDouble(campoValor.getText().toString()));
+            movimentacao.setCategoria(campoCategoria.getText().toString());
+            movimentacao.setDescricao(campoDescricao.getText().toString());
+            movimentacao.setData(data);
+            movimentacao.setTipo("d");
 
+            movimentacao.salvar(data);
         }
-
-        movimentacao = new Movimentacao();
-        String data = campoData.getText().toString();
-        movimentacao.setValor( Double.parseDouble(campoValor.getText().toString()) );
-        movimentacao.setCategoria( campoCategoria.getText().toString() );
-        movimentacao.setDescricao( campoDescricao.getText().toString() );
-        movimentacao.setData( data );
-        movimentacao.setTipo( "d" );
-
-        movimentacao.salvar( data );
-
     }
 
     public boolean validarCampos() {
 
-        return true;
+        String textoValor = campoValor.getText().toString();
+        String textoData = campoData.getText().toString();
+        String textoCategoria = campoCategoria.getText().toString();
+        String textoDescricao = campoDescricao.getText().toString();
+
+        if (!textoValor.trim().isEmpty()) {
+            if (!textoData.trim().isEmpty()) {
+                if (!textoCategoria.trim().isEmpty()) {
+                    if (!textoDescricao.trim().isEmpty()) {
+                        return true;
+                    } else {
+                        Toast.makeText(this, "Descricao nao preenchida", Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                } else {
+                    Toast.makeText(this, "Categoria nao preenchida", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            } else {
+                Toast.makeText(this, "Data nao preenchida", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+            Toast.makeText(this, "Valor nao preenchido", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 }
