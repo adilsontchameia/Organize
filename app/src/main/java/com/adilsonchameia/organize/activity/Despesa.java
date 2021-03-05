@@ -60,8 +60,8 @@ public class Despesa extends AppCompatActivity {
             movimentacao.setTipo("d");
 
             despesaGerada = valorRecuperado;
-            despesaAtualizada = despesaTotal + despesaGerada;
-
+            Double despesaAtualizada = despesaTotal + despesaGerada;
+            atualizarDespesas(despesaAtualizada);
             movimentacao.salvar(data);
         }
     }
@@ -114,5 +114,13 @@ public class Despesa extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void atualizarDespesas(Double despesa) {
+        String emailUsuario = autenticacao.getCurrentUser().getEmail();
+        String idUsuario = Base64Custom.codificarBase64(emailUsuario);
+        DatabaseReference usuarioRef = firebaseRef.child("usuarios").child(idUsuario);
+
+        usuarioRef.child("despesa").setValue(despesa);
     }
 }
