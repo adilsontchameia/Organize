@@ -41,8 +41,8 @@ public class Despesa extends AppCompatActivity {
         campoDescricao = findViewById(R.id.editDescricao);
 
         //Preenche o campo data com a date atual
-        campoData.setText( DateCustom.dataAtual() );
-
+        campoData.setText(DateCustom.dataAtual());
+        recuperarDespesaTotal();
     }
 
     public void salvarDespesa(View view){
