@@ -55,6 +55,7 @@ public class Despesa extends AppCompatActivity {
         String textoCategoria = campoCategoria.getText().toString();
         String textoDescricao = campoDescricao.getText().toString();
 
+        //Validando todos campos
         if (!textoValor.trim().isEmpty()) {
             if (!textoData.trim().isEmpty()) {
                 if (!textoCategoria.trim().isEmpty()) {
