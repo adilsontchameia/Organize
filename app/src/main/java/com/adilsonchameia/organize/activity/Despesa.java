@@ -34,6 +34,10 @@ public class Despesa extends AppCompatActivity {
 
     public void salvarDespesa(View view){
 
+        if(validarCampos()){
+
+        }
+
         movimentacao = new Movimentacao();
         String data = campoData.getText().toString();
         movimentacao.setValor( Double.parseDouble(campoValor.getText().toString()) );
@@ -44,5 +48,10 @@ public class Despesa extends AppCompatActivity {
 
         movimentacao.salvar( data );
 
+    }
+
+    public boolean validarCampos() {
+
+        return true;
     }
 }
